@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phát nhạc Giáng Sinh</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2e8b57;
+        }
+
+        img {
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        #message {
+            font-size: 18px;
+            color: #d2691e;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Chúc Mừng Giáng Sinh!</h1>
+    <p>Nhấn vào cây thông để phát nhạc Giáng Sinh.</p>
+
+    <!-- Hình ảnh cây thông -->
+    <img src="tree.png" alt="Cây thông Giáng Sinh" id="christmasTree" height="100px" />
+
+    <!-- Phần tử âm thanh -->
+    <audio id="christmasMusic">
+        <source src="noel.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
+
+    <!-- Thông báo -->
+    <p id="message"></p>
+
+    <script>
+        // Lấy phần tử hình ảnh và audio
+        const christmasTree = document.getElementById('christmasTree');
+        const christmasMusic = document.getElementById('christmasMusic');
+        const message = document.getElementById('message');
+
+        // Thêm sự kiện nhấp chuột vào cây thông
+        christmasTree.addEventListener('click', () => {
+            if (christmasMusic.paused) {
+                christmasMusic.play(); // Phát nhạc
+                message.textContent = "Nhạc Giáng Sinh đang phát! 🎄🎶";
+            } else {
+                christmasMusic.pause(); // Tạm dừng nhạc
+                message.textContent = "Nhạc đã tạm dừng. Nhấn lại để phát tiếp.";
+            }
+        });
+    </script>
+</body>
+
+</html>
